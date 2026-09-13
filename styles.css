@@ -1,0 +1,152 @@
+/* 基础变量集中管理，方便快速调整名片的视觉风格 */
+:root {
+  --page-background: #eef3f1;
+  --card-background: #ffffff;
+  --ink: #20302e;
+  --muted-ink: #71807d;
+  --accent: #5b8c82;
+  --accent-soft: #dcebe6;
+  --shadow: 0 18px 42px rgba(47, 73, 67, 0.14);
+}
+
+/* 统一盒模型并移除浏览器默认间距 */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page-background);
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+/* 让卡片在不同屏幕尺寸下始终保持居中，并留出移动端边距 */
+.page-shell {
+  display: grid;
+  min-height: 100vh;
+  padding: 24px;
+  place-items: center;
+}
+
+.profile-card {
+  display: flex;
+  width: min(100%, 480px);
+  align-items: center;
+  gap: 28px;
+  padding: 36px;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+/* 悬停时轻微上浮，避免过强的动效打扰阅读 */
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px rgba(47, 73, 67, 0.2);
+}
+
+.avatar {
+  display: grid;
+  flex: 0 0 104px;
+  width: 104px;
+  height: 104px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 8px solid #f4faf8;
+  border-radius: 50%;
+  font-size: 38px;
+  font-weight: 700;
+  place-items: center;
+}
+
+.profile-content {
+  min-width: 0;
+}
+
+.profile-label {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.profile-role {
+  margin: 8px 0 22px;
+  color: var(--muted-ink);
+  font-size: 15px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.contact-list a {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted-ink);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.contact-list a:hover {
+  color: var(--accent);
+}
+
+.contact-list a span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-icon {
+  display: inline-grid;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  background: #f1f7f5;
+  border-radius: 50%;
+  font-size: 12px;
+  place-items: center;
+}
+
+/* 小屏幕上改为纵向布局，确保内容不会挤压或溢出 */
+@media (max-width: 520px) {
+  .profile-card {
+    flex-direction: column;
+    gap: 22px;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .contact-list {
+    text-align: left;
+  }
+}
+
+/* 用户偏好减少动画时，保留布局但关闭过渡效果 */
+@media (prefers-reduced-motion: reduce) {
+  .profile-card,
+  .contact-list a {
+    transition: none;
+  }
+}
