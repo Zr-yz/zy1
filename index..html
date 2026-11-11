@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蜀韵·成都 | 首页</title>
+  <style>:root {
+    --paper: #f7f3ea;
+    --ink: #593318;
+    --ink-soft: #7a5c40;
+    --gold: #c9a86c;
+    --gold-deep: #9b6f39;
+    --line: #ddd4c3;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", SimSun, serif;
+  }
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+  /* 导航栏 */
+  header {
+    background-color: #fffbf4;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+  .nav-wrap {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+  .logo {
+    font-size: 26px;
+    color: var(--gold-deep);
+    font-weight: bold;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    margin-left: 24px;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  nav a:hover {
+    color: var(--gold-deep);
+  }
+
+  /* 轮播容器 */
+  .banner {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    background:#f7f3ea;
+  }
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slide-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .slide-item.active {
+    opacity: 1;
+  }
+  /* 轮播小圆点 */
+  .dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap:12px;
+  }
+  .dot {
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background:#ffffff70;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: var(--gold-deep);
+  }
+
+  /* 通用容器 */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 70px auto;
+  }
+  .title-line {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .title-line h3 {
+    font-size: 28px;
+    color: var(--gold-deep);
+  }
+  .title-line span {
+    display: inline-block;
+    width:70px;
+    height:2px;
+    background: var(--gold);
+    margin-top: 8px;
+  }
+  .intro-text {
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-size:16px;
+    text-align:center;
+    max-width:900px;
+    margin:0 auto;
+  }
+  /* 页脚 */
+  footer {
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    padding:26px 0;
+    margin-top: 60px;
+  }
+  /* 手机适配 */
+  @media (max-width:768px){
+    .banner {
+      height:360px;
+    }
+    nav a {
+      margin-left:8px;
+      font-size:14px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <div class="logo">蜀韵·成都</div>
+      <nav>
+        <a href="#">首页</a>
+        <a href="media/a.html">美食</a>
+        <a href="#">景点</a>
+        <a href="#">文化</a>
+        <a href="#">交通</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="banner">
+    <div class="slide-item active">
+      <img class="banner-img" src="media/banner1.jpg" alt="蜀韵成都封面">
+    </div>
+    <div class="slide-item">
+      <img class="banner-img" src="media/banner5.jpg" alt="旅行攻略">
+    </div>
+    <div class="slide-item">
+      <img class="banner-img" src="media/banner4.jpg" alt="天府文化">
+    </div>
+    <div class="slide-item">
+      <img class="banner-img" src="media/banner3.jpg" alt="必游景点">
+    </div>
+    <div class="slide-item">
+      <img class="banner-img" src="media/banner2.jpg" alt="成都味道">
+    </div>
+    <div class="dots">
+      <div class="dot active" onclick="switchSlide(0)"></div>
+      <div class="dot" onclick="switchSlide(1)"></div>
+      <div class="dot" onclick="switchSlide(2)"></div>
+      <div class="dot" onclick="switchSlide(3)"></div>
+      <div class="dot" onclick="switchSlide(4)"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="title-line">
+      <h3>蓉城简介</h3>
+      <span></span>
+    </div>
+    <p class="intro-text">
+成都，别称蓉城、锦城，古蜀文明的发祥地。这里慢煮烟火，茶香悠长，可爱的大熊猫是城市名片。武侯祠沉淀三国往事，宽窄巷子藏着老成都的闲适，火锅飘香，川剧婉转，是一座来了就不想离开的城市。
+    </p>
+  </div>
+
+  <footer>
+    <p>蜀韵·成都 文旅宣传网页 | 课程作业</p>
+  </footer>
+
+<script>
+  let index = 0;
+  const slides = document.querySelectorAll('.slide-item');
+  const dots = document.querySelectorAll('.dot');
+  const total = slides.length;
+
+  function switchSlide(i){
+    slides[index].classList.remove('active');
+    dots[index].classList.remove('active');
+    index = i;
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+  }
+  //自动轮番
+setInterval(()=>{
+     let next = (index + 1) % total;
+     switchSlide(next);
+   },4000)
+ </script>
+ </body>
+</html>
