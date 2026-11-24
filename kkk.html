@@ -1,0 +1,303 @@
+html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成都 · 一座来了就不想走的城市</title>
+<style>
+  /* ================= 这里全都是样式设置 ================= */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; color: #2b2b2b; background: #fffaf5; line-height: 1.75; }
+  a { text-decoration: none; color: inherit; }
+
+  /* 导航 */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 99; display: flex; justify-content: space-between;
+        align-items: center; padding: 14px 6vw; background: rgba(255,250,245,.88); backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0,0,0,.06); }
+  .logo { font-size: 20px; font-weight: 700; letter-spacing: 4px; color: #c8102e; }
+  nav ul { display: flex; gap: 28px; list-style: none; font-size: 15px; }
+  nav ul a { color: #555; transition: .3s; }
+  nav ul a:hover { color: #c8102e; }
+
+  /* 首屏 */
+  .hero { height: 85vh; min-height: 480px; display: flex; flex-direction: column; justify-content: center;
+          align-items: center; text-align: center; color: #fff; padding: 20px;
+          background: linear-gradient(rgba(30, 15, 15, 0.5), rgba(30, 15, 15, 0.65)),
+                     url('https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; }
+  .hero h1 { font-size: clamp(42px, 9vw, 90px); letter-spacing: 14px; font-weight: 800; text-indent: 14px; text-shadow: 0 6px 30px rgba(0,0,0,.4); }
+  .hero p { margin-top: 18px; font-size: clamp(14px, 2.2vw, 19px); letter-spacing: 3px; opacity: .92; }
+  .hero .line { width: 70px; height: 3px; background: #e8b04b; margin: 26px auto; border-radius: 2px; }
+  .scroll { margin-top: 34px; font-size: 13px; letter-spacing: 2px; opacity: .8; animation: up 1.8s infinite; }
+  @keyframes up { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+
+  /* 通用区块 */
+  section { padding: 90px 6vw; }
+  .head { text-align: center; margin-bottom: 56px; }
+  .head h2 { font-size: clamp(26px, 4vw, 38px); letter-spacing: 6px; color: #1f1f1f; }
+  .head span { display: block; margin-top: 10px; font-size: 13px; letter-spacing: 5px; color: #b08a5a; text-transform: uppercase; }
+  .head .bar { width: 56px; height: 3px; background: #c8102e; margin: 18px auto 0; border-radius: 2px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; max-width: 1180px; margin: 0 auto; }
+
+  /* 卡片 */
+  .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 22px rgba(0,0,0,.07);
+          transition: .35s; display: flex; flex-direction: column; }
+  .card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(200,16,46,.15); }
+  
+  /* 图片容器：添加了淡灰色背景兜底，万一断网也不会是一片空白 */
+  .card .pic { height: 200px; overflow: hidden; position: relative; background: #e8e2db; }
+  .card .img-bg {
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform .6s ease;
+  }
+  .card:hover .img-bg { transform: scale(1.08); }
+  
+  .tag { position: absolute; top: 12px; left: 12px; background: rgba(200,16,46,.9); color: #fff;
+         font-size: 12px; padding: 4px 12px; border-radius: 20px; letter-spacing: 1px; z-index: 2; }
+  .card .txt { padding: 20px 22px 24px; flex: 1; }
+  .card h3 { font-size: 19px; margin-bottom: 8px; letter-spacing: 1px; color: #222; }
+  .card p { font-size: 14px; color: #777; }
+
+  /* 美食与文化区块背景 */
+  .food { background: #fdf3ea; }
+  .culture .card { background: linear-gradient(160deg, #fff, #fff6f2); }
+
+  /* 页脚 */
+  footer { background: #1c1b1a; color: #c9c4be; text-align: center; padding: 46px 6vw; font-size: 13px; letter-spacing: 1px; }
+  footer strong { color: #e8b04b; letter-spacing: 4px; font-size: 16px; display: block; margin-bottom: 10px; }
+
+  @media(max-width:600px) { nav ul { gap: 16px; font-size: 13px; } section { padding: 64px 5vw; } }
+</style>
+</head>
+<body>
+
+<!-- ================= 下面是网页内容 ================= -->
+
+<!-- 导航 -->
+<nav>
+  <div class="logo">成 都</div>
+  <ul>
+    <li><a href=" ">景点</a ></li>
+    <li><a href="#food">美食</a ></li>
+    <li><a href="#culture">文化</a ></li>
+  </ul>
+</nav>
+
+<!-- 首屏 -->
+<header class="hero">
+  <h1>成都</h1>
+  <div class="line"></div>
+  <p>一 座 来 了 就 不 想 走 的 城 市</p >
+  <div class="scroll">▼ 向下滑动</div>
+</header>
+
+<!-- 景点 -->
+<section id="spots">
+  <div class="head">
+    <h2>必游景点</h2>
+    <span>Scenic Spots</span>
+    <div class="bar"></div>
+  </div>
+  <div class="grid">
+    <!-- 1 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">国宝</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>大熊猫繁育研究基地</h3>
+        <p>清晨是熊猫最活跃的时段，看它们吃竹子、爬树、打滚，治愈一整天。</p >
+      </div>
+    </div>
+    <!-- 2 (替换了稳定的老街图片) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">老街</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1529921879218-f99546d03a9d?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>宽窄巷子</h3>
+        <p>青砖灰瓦的清代古街，宽巷子热闹、窄巷子文艺、井巷子最市井。</p >
+      </div>
+    </div>
+    <!-- 3 (替换了中式灯笼夜景) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">夜景</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1583224964978-2257b960c3d3?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>锦里古街</h3>
+        <p>红灯笼亮起的瞬间，三国风情扑面而来，小吃摊一路吃到街尾。</p >
+      </div>
+    </div>
+    <!-- 4 (替换了红墙古建图片) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">三国</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1542898640-76a9a19b8081?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>武侯祠</h3>
+        <p>中国唯一君臣合祀祠庙，红墙竹影，是拍照与读史的好去处。</p >
+      </div>
+    </div>
+    <!-- 5 (替换了江水水利图片) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">水利</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>都江堰</h3>
+        <p>两千多年仍在运转的超级水利工程，叹服于古人的智慧。</p >
+      </div>
+    </div>
+    <!-- 6 (替换了青山绿水图片) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">幽静</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>青城山</h3>
+        <p>“青城天下幽”，道教名山，林木苍翠，适合慢慢走、慢慢呼吸。</p >
+      </div>
+    </div>
+  </div>
+</section>
+<section id="food" class="food">
+  <div class="head">
+    <h2>巴蜀美食</h2>
+    <span>Food Culture</span>
+    <div class="bar"></div>
+  </div>
+  <div class="grid">
+    <!-- 1 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">必吃</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>四川火锅</h3>
+        <p>牛油翻滚、麻辣鲜香，毛肚七上八下，鸭肠一涮即脆。</p >
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">夜宵</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>串串香</h3>
+        <p>一把竹签下锅，撸串配冰粉，是成都人最放松的夜晚。</p >
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">小吃</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>担担面</h3>
+        <p>面条细薄、卤汁酥香，麻辣中带一丝回甜，一口就上瘾。</p >
+      </div>
+    </div>
+    <!-- 4 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">老字号</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>龙抄手</h3>
+        <p>皮薄馅嫩、汤鲜味美，是成都人从小吃到大的温柔。</p >
+      </div>
+    </div>
+    <!-- 5 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">特色</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>钟水饺</h3>
+        <p>纯肉馅、红油浇，微甜微辣，成都小吃的经典代表。</p >
+      </div>
+    </div>
+    <!-- 6 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">甜品</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>红糖冰粉</h3>
+        <p>红糖、糍粑、山楂、葡萄干，冰凉滑爽，解辣神器。</p >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 文化 -->
+<section id="culture" class="culture">
+  <div class="head">
+    <h2>天府文化</h2>
+    <span>Local Culture</span>
+    <div class="bar"></div>
+  </div>
+  <div class="grid">
+    <!-- 1 (替换了中国风脸谱/戏曲图片) -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">非遗</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1613663386486-3d1ab94dab87?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>川剧变脸</h3>
+        <p>一转身、一挥手，脸谱瞬间变幻，掌声与惊呼齐飞。</p >
+      </div>
+    </div>
+    <!-- 2 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">慢生活</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>茶馆盖碗茶</h3>
+        <p>竹椅一躺、盖碗一掀，掏耳朵的师傅走过，就是一下午。</p >
+      </div>
+    </div>
+    <!-- 3 -->
+    <div class="card">
+      <div class="pic">
+        <span class="tag">手作</span>
+        <div class="img-bg" style="background-image: url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=640&q=80');"></div>
+      </div>
+      <div class="txt">
+        <h3>蜀锦蜀绣</h3>
+        <p>“锦绣”二字的源头，一针一线里都是成都的精致与耐心。</p >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <strong>成 都</strong>
+  天府之国 · 雪山下的公园城市<br>
+  © 2025 Chengdu Travel Page · 网页设计作业
+</footer>
+
+</body>
+</html>
+
+<!-- 美食 --
